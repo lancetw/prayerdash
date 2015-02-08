@@ -55,7 +55,7 @@ function DailyCtrl($scope) {
 }
 
 function WeeklyCtrl($scope) {
-  $scope.labels = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+  $scope.labels = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
   $scope.series = ['禱告點擊總數', '新加入守望者'];
   $scope.data = [
     [37, 44, 32, 25, 31, 51, 49],
