@@ -16,12 +16,13 @@
   <!-- SCRIPTS -->
   <!-- build:js lib/js/main.min.js -->
   <script type="text/javascript" src="components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="components/moment/min/moment-with-locales.min.js"></script>
+  <script type="text/javascript" src="components/angular-moment/angular-moment.min.js"></script>
   <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script type="text/javascript" src="components/angular-cookies/angular-cookies.min.js"></script>
   <script type="text/javascript" src="components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script type="text/javascript" src="components/Chart.js/Chart.min.js"></script>
   <script type="text/javascript" src="components/angular-chart.js/dist/angular-chart.js"></script>
-
   <!-- endbuild -->
   <!-- Custom Scripts -->
   <script type="text/javascript" src="js/dashboard.min.js"></script>
@@ -43,7 +44,7 @@
           <a href="#">統計分析 <span class="menu-icon fa fa-tachometer"></span></a>
         </li>
         <li class="sidebar-list">
-          <a href="#/pPboVag7x5/tables">代禱對象 <span class="menu-icon fa fa-table"></span></a>
+          <a href="#/{{churchData.qlink}}/tables">代禱對象 <span class="menu-icon fa fa-table"></span></a>
         </li>
       </ul>
       <div class="sidebar-footer">
@@ -126,10 +127,10 @@
             -->
             <div class="meta">
               <div class="page">
-                中華基督教福音協進會
+                {{churchData.name}}
               </div>
               <div class="breadcrumb-links">
-                www.ccea.org.tw
+                複製本頁網址：http://1and1.ccea.org.tw/dash/{{churchData.qlink}}
               </div>
             </div>
           </div>

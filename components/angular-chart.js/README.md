@@ -1,5 +1,9 @@
 # angular-chart.js
 
+[![Bower version](https://badge.fury.io/bo/angular-chart.js.svg)](http://badge.fury.io/bo/angular-chart.js)
+[![npm version](https://badge.fury.io/js/angular-chart.js.svg)](http://badge.fury.io/js/angular-chart.js)
+[![Build Status](https://travis-ci.org/jtblin/angular-chart.js.png)](https://travis-ci.org/jtblin/angular-chart.js)
+
 Beautiful, reactive, responsive charts for Angular.JS using [Chart.js](http://www.chartjs.org/). [Demo](http://jtblin.github.io/angular-chart.js/)
 
 # Installation
@@ -15,7 +19,8 @@ or copy the files from `dist/`. Then add the sources to your code (adjust paths 
 
 # Utilisation
 
-There are 6 types of charts so 6 directives: `chart-line`, `chart-bar`, `chart-radar`, `chart-pie`, `chart-polar-area`, `chart-doughnut`.
+There are 6 types of charts so 6 directives: `chart-line`, `chart-bar`, `chart-radar`, `chart-pie`, 
+`chart-polar-area`, `chart-doughnut`.
 
 They all use mostly the same API:
 
@@ -24,6 +29,7 @@ They all use mostly the same API:
 - `options`: chart options (as from [Chart.js documentation](http://www.chartjs.org/docs/))
 - `series`: (default: `[]`): series labels (line, bar, radar)
 - `colours`: data colours (will use default colours if not specified)
+- `getColour`: function that returns a colour in case there are not enough (will use random colours if not specified)
 - `click`: onclick event handler (line, radar)
 - `legend`: (default: `false`): show legend below the chart
 
@@ -32,7 +38,8 @@ dynamically.
 
 ## Browser compatibility
 
-For IE8 and older browsers, you will need to include [excanvas](https://code.google.com/p/explorercanvas/wiki/Instructions). 
+For IE8 and older browsers, you will need 
+to include [excanvas](https://code.google.com/p/explorercanvas/wiki/Instructions). 
 You will also need [shims](https://github.com/es-shims/es5-shim) for ES5 functions.
 
 ```html
@@ -78,18 +85,52 @@ angular.module("app", ["chart.js"]).controller("LineCtrl", ['$scope', '$timeout'
 
 ## Reactive
 
-angular-chart.js watch updates on data, series, labels and options and will update, or destroy and recreate, 
+angular-chart.js watch updates on data, series, labels, colours and options and will update, or destroy and recreate, 
 the chart on changes.
 
-# Contributing
+## Events
+
+angular-chart.js emits the following events on the `scope` and pass the chart as argument:
+
+* `create`: when chart is created
+* `update`: when chart is updated
+
+```
+$scope.$on('create', function (chart) {
+  console.log(chart);
+});
+```
+
+**Note**: the event can be emitted multiple times for each chart as the chart can be destroyed and
+created multiple times during angular `watch` lifecycle.
+
+angular-chart.js listen to the scope `destroy` event and destroy the chart when it happens.
+
+## Colours
+
+There are a set of 7 default colours. Colours can be replaced using the `colours` attribute.
+If there is more data than colours, colours are generated randomly or can be provided 
+via a function through the `getColour` attribute.
+
+Hex colours are converted to Chart.js colours automatically, 
+including different shades for highlight, fill, stroke, etc.
+
+# Issues
 
 **Issues or feature requests for Chart.js (e.g. new chart type, new axis, etc.) need to be opened on 
 [Chart.js issues tracker](https://github.com/nnnick/Chart.js/issues)**
  
 Open issues in [github](https://github.com/jtblin/angular-chart.js/issues). **Please add a link to a plunker, jsbin, 
 or equivalent.** Here is a [jsbin template](http://jsbin.com/dufibi/3/edit?html,js,output) for convenience.
+
+# Contributing
  
 Pull requests welcome!
+
+1. Fork the repo
+1. Make your changes
+1. Run tests: `npm test`
+1. Submit pull request
 
 ## Contributors
 
