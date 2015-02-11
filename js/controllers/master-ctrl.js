@@ -47,6 +47,9 @@ function MasterCtrl($scope, $cookieStore, $http, $stateParams, $rootScope) {
 }
 
 function MainDataCtrl($scope, $http, $stateParams, $rootScope) {
+  if (!$stateParams || $stateParams.qlink === '') {
+    window.location.href = "http://1and1.ccea.org.tw";
+  }
 
   $scope.qlink = $stateParams.qlink;
   $scope.data = [];

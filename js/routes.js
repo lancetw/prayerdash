@@ -7,7 +7,9 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
 
         // For unmatched routes
-        $urlRouterProvider.otherwise('/ogqEo2xxvb');
+        $urlRouterProvider.otherwise(function($injector, $location) {
+            window.location.href = "http://1and1.ccea.org.tw";
+        });
 
         // Application routes
         $stateProvider

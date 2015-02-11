@@ -12,6 +12,7 @@
               <td>決志</td>
               <td>受洗</td>
               <td>聚會</td>
+              <td>加入時間</td>
             </thead>
             <tbody>
               <tr ng-repeat="item in items">
@@ -19,6 +20,7 @@
                 <td><span class="text-success"><i ng-if="item.sinner" class="fa fa-check"></i></span></td>
                 <td><span class="text-success"><i ng-if="item.baptized" class="fa fa-check"></i></span></td>
                 <td><span class="text-success"><i ng-if="item.meeter" class="fa fa-check"></i></span></td>
+                <td>{{item.created_at}}</td>
               </tr>
             </tbody>
           </table>
