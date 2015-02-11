@@ -16,9 +16,9 @@
             <tbody>
               <tr ng-repeat="item in items">
                 <td>{{item.mask}}</td>
-                <td><i ng-if="item.sinner" class="fa fa-check"></i></td>
-                <td><i ng-if="item.baptized" class="fa fa-check"></i></td>
-                <td><i ng-if="item.meeting" class="fa fa-check"></i></td>
+                <td><span class="text-success"><i ng-if="item.sinner" class="fa fa-check"></i></span></td>
+                <td><span class="text-success"><i ng-if="item.baptized" class="fa fa-check"></i></span></td>
+                <td><span class="text-success"><i ng-if="item.meeter" class="fa fa-check"></i></span></td>
               </tr>
             </tbody>
           </table>
@@ -50,9 +50,9 @@
             <tbody>
               <tr ng-repeat="item in items">
                 <td>{{item.mask}}</td>
-                <td><i ng-if="item.sinner" class="fa fa-check"></i></td>
-                <td><i ng-if="item.baptized" class="fa fa-check"></i></td>
-                <td><i ng-if="item.meeting" class="fa fa-check"></i></td>
+                <td><span class="text-success"><i ng-if="item.sinner" class="fa fa-check"></i></span></td>
+                <td><span class="text-success"><i ng-if="item.baptized" class="fa fa-check"></i></span></td>
+                <td><span class="text-success"><i ng-if="item.meeter" class="fa fa-check"></i></span></td>
                 <td>{{item.created_at}}</td>
               </tr>
             </tbody>
