@@ -55,6 +55,9 @@ function MainDataCtrl($scope, $http, $stateParams, $rootScope) {
   $scope.data = [];
   $http.get('http://1and1.deliverwork.info/api/v1/data?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
+      if (angular.equals({}, data)) {
+        window.location.href = "http://1and1.ccea.org.tw";
+      }
       $rootScope.churchData  = data;
     }).
     error(function(data, status, headers, config) {
