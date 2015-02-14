@@ -244,6 +244,10 @@ function BustedsCtrl($scope, $http, $stateParams) {
 }
 
 function InfoCtrl($scope, $http, $stateParams) {
+  $scope.qlink = $stateParams.qlink;
+  $scope.info = {};
+
+
   $http.get('http://1and1.deliverwork.info/api/v1/data/info?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       $scope.info  = data;

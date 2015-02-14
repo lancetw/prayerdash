@@ -44,7 +44,8 @@
         <div class="widget-icon blue pull-left">
           <i class="fa fa-bolt"></i>
         </div>
-        <div class="title">{{targets.count/users.count | number : 2}}</div>
+        <div class="title" ng-if="users.count > 0">{{targets.count/users.count | number : 2}}</div>
+        <div class="title" ng-if="users.count <= 0">0.0</div>
         <div class="comment">平均代禱指數</div>
       </rd-widget-body>
     </rd-widget>
