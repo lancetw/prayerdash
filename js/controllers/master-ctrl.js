@@ -10,7 +10,8 @@ angular.module('RDash')
 .controller('ThisMonthCtrl', ['$scope', '$http', '$stateParams', ThisMonthCtrl])
 .controller('MonthlyCtrl', ['$scope', '$http', '$stateParams', MonthlyCtrl])
 .controller('TargetsCtrl', ['$scope', '$http', '$stateParams', TargetsCtrl])
-.controller('BustedsCtrl', ['$scope', '$http', '$stateParams', BustedsCtrl]);
+.controller('BustedsCtrl', ['$scope', '$http', '$stateParams', BustedsCtrl])
+.controller('InfoCtrl', ['$scope', '$http', '$stateParams', InfoCtrl]);
 
 function MasterCtrl($scope, $cookieStore, $http, $stateParams, $rootScope) {
   /**
@@ -240,6 +241,15 @@ function BustedsCtrl($scope, $http, $stateParams) {
   };
 
   $scope.getItems();
+}
+
+function InfoCtrl($scope, $http, $stateParams) {
+  $http.get('http://1and1.deliverwork.info/api/v1/data/info?qlink=' + $scope.qlink).
+    success(function(data, status, headers, config) {
+      $scope.info  = data;
+    }).
+    error(function(data, status, headers, config) {
+  });
 }
 
 function weekCount(year, month_number) {

@@ -20,6 +20,10 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
             .state('tables', {
                 url: '/:qlink/tables',
                 templateUrl: 'templates/tables.html'
+            })
+            .state('info', {
+                url: '/:qlink/info',
+                templateUrl: 'templates/info.html'
             });
     }
 ]);
