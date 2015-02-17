@@ -41,13 +41,13 @@
         </li>
         <li class="sidebar-title"><span>功能選單</span></li>
         <li class="sidebar-list">
-          <a href="#/{{churchData.qlink}}">統計分析 <span class="menu-icon fa fa-tachometer"></span></a>
+          <a ng-href="#/{{qlink}}">統計分析 <span class="menu-icon fa fa-tachometer"></span></a>
         </li>
         <li class="sidebar-list">
-          <a href="#/{{churchData.qlink}}/tables">代禱對象 <span class="menu-icon fa fa-table"></span></a>
+          <a ng-href="#/{{qlink}}/tables">代禱對象 <span class="menu-icon fa fa-table"></span></a>
         </li>
         <li class="sidebar-list">
-          <a href="#/{{churchData.qlink}}/info">其他資訊 <span class="menu-icon fa fa-info-circle"></span></a>
+          <a ng-href="#/{{qlink}}/info">其他資訊 <span class="menu-icon fa fa-info-circle"></span></a>
         </li>
       </ul>
       <div class="sidebar-footer">
@@ -133,7 +133,7 @@
                 {{churchData.name}}
               </div>
               <div class="breadcrumb-links">
-                複製本頁網址：http://1and1.ccea.org.tw/dash/{{churchData.qlink}}
+                複製本頁網址：http://1and1.ccea.org.tw/dash/{{qlink}}
               </div>
             </div>
           </div>
