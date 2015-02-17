@@ -13,6 +13,10 @@ angular.module('RDash')
 .controller('BustedsCtrl', ['$scope', '$http', '$stateParams', BustedsCtrl])
 .controller('InfoCtrl', ['$scope', '$http', '$stateParams', InfoCtrl]);
 
+var SITE_URL = 'http://1and1.deliverwork.info/';
+//var SITE_URL = 'http://192.168.0.100:8000/';
+
+
 function MasterCtrl($scope, $cookieStore, $http, $stateParams, $rootScope) {
   /**
    * Sidebar Toggle & Cookie Control
@@ -54,7 +58,7 @@ function MainDataCtrl($scope, $http, $stateParams, $rootScope) {
 
   $scope.qlink = $stateParams.qlink;
   $scope.data = [];
-  $http.get('http://1and1.deliverwork.info/api/v1/data?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       if (angular.equals({}, data)) {
         window.location.href = "http://1and1.ccea.org.tw";
@@ -65,21 +69,21 @@ function MainDataCtrl($scope, $http, $stateParams, $rootScope) {
       $rootScope.churchData.name = '未命名';
   });
 
-  $http.get('http://1and1.deliverwork.info/api/v1/data/targets?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data/targets?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       $scope.targets  = data;
     }).
     error(function(data, status, headers, config) {
   });
 
-  $http.get('http://1and1.deliverwork.info/api/v1/data/actions?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data/actions?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       $scope.actions  = data;
     }).
     error(function(data, status, headers, config) {
   });
 
-  $http.get('http://1and1.deliverwork.info/api/v1/data/users?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data/users?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       $scope.users  = data;
     }).
@@ -93,7 +97,7 @@ function DailyCtrl($scope, $http, $stateParams) {
   $scope.qlink = $stateParams.qlink;
   $scope.data = [];
 
-  $http.get('http://1and1.deliverwork.info/api/v1/data/stat/today?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data/stat/today?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       if (data.statistic_actions_today && data.statistic_users_today) {
         $scope.data = [
@@ -117,7 +121,7 @@ function WeeklyCtrl($scope, $http, $stateParams) {
   $scope.qlink = $stateParams.qlink;
   $scope.data = [];
 
-  $http.get('http://1and1.deliverwork.info/api/v1/data/stat/lastweek?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data/stat/lastweek?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       if (data.statistic_actions_lastweek && data.statistic_users_lastweek) {
         $scope.data = [
@@ -145,7 +149,7 @@ function ThisMonthCtrl($scope, $http, $stateParams) {
   $scope.qlink = $stateParams.qlink;
   $scope.data = [];
 
-  $http.get('http://1and1.deliverwork.info/api/v1/data/stat/month_by_weeks?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data/stat/month_by_weeks?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       if (data.statistic_actions_month_by_weeks && data.statistic_users_month_by_weeks) {
         $scope.data = [
@@ -169,7 +173,7 @@ function MonthlyCtrl($scope, $http, $stateParams) {
   $scope.qlink = $stateParams.qlink;
   $scope.data = [];
 
-  $http.get('http://1and1.deliverwork.info/api/v1/data/stat/year?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data/stat/year?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       if (data.statistic_actions_year && data.statistic_users_year) {
         $scope.data = [
@@ -193,7 +197,7 @@ function TargetsCtrl($scope, $http, $stateParams) {
   $scope.current_page = 1;
 
   $scope.getItems = function () {
-    $http.get('http://1and1.deliverwork.info/api/v1/data/targetall/20?qlink=' + $scope.qlink + '&page=' + $scope.current_page).
+    $http.get(SITE_URL + 'api/v1/data/targetall/20?qlink=' + $scope.qlink + '&page=' + $scope.current_page).
       success(function(data, status, headers, config) {
         if (data.total) {
           $scope.total = data.total;
@@ -222,7 +226,7 @@ function BustedsCtrl($scope, $http, $stateParams) {
 
 
   $scope.getItems = function () {
-    $http.get('http://1and1.deliverwork.info/api/v1/data/bustedall/20?qlink=' + $scope.qlink + '&page=' + $scope.current_page).
+    $http.get(SITE_URL + 'api/v1/data/bustedall/20?qlink=' + $scope.qlink + '&page=' + $scope.current_page).
       success(function(data, status, headers, config) {
         if (data.total) {
           $scope.total = data.total;
@@ -236,7 +240,8 @@ function BustedsCtrl($scope, $http, $stateParams) {
     });
   }
 
-  $scope.pageChanged = function() {
+  $scope.pageChanged = function(page) {
+    $scope.current_page = page;
     $scope.getItems();
   };
 
@@ -248,7 +253,7 @@ function InfoCtrl($scope, $http, $stateParams) {
   $scope.info = {};
 
 
-  $http.get('http://1and1.deliverwork.info/api/v1/data/info?qlink=' + $scope.qlink).
+  $http.get(SITE_URL + 'api/v1/data/info?qlink=' + $scope.qlink).
     success(function(data, status, headers, config) {
       $scope.info  = data;
     }).
