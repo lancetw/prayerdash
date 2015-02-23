@@ -98,6 +98,12 @@ function DailyCtrl($scope, $http, $stateParams, $rootScope) {
   $rootScope.qlink = $stateParams.qlink;
   $scope.data = [];
 
+  $scope.options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    animation: true
+  };
+
   $http.get(SITE_URL + 'api/v1/data/stat/today?qlink=' + $rootScope.qlink).
     success(function(data, status, headers, config) {
       if (data.statistic_actions_today && data.statistic_users_today) {
@@ -121,6 +127,12 @@ function WeeklyCtrl($scope, $http, $stateParams, $rootScope) {
   $scope.series = ['禱告點擊總數', '新加入守望者'];
   $rootScope.qlink = $stateParams.qlink;
   $scope.data = [];
+
+  $scope.options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    animation: true
+  };
 
   $http.get(SITE_URL + 'api/v1/data/stat/lastweek?qlink=' + $rootScope.qlink).
     success(function(data, status, headers, config) {
@@ -150,6 +162,12 @@ function ThisMonthCtrl($scope, $http, $stateParams, $rootScope) {
   $rootScope.qlink = $stateParams.qlink;
   $scope.data = [];
 
+  $scope.options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    animation: true
+  };
+
   $http.get(SITE_URL + 'api/v1/data/stat/month_by_weeks?qlink=' + $rootScope.qlink).
     success(function(data, status, headers, config) {
       if (data.statistic_actions_month_by_weeks && data.statistic_users_month_by_weeks) {
@@ -173,6 +191,12 @@ function MonthlyCtrl($scope, $http, $stateParams, $rootScope) {
   $scope.series = ['禱告點擊總數', '新加入守望者'];
   $rootScope.qlink = $stateParams.qlink;
   $scope.data = [];
+
+  $scope.options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    animation: true
+  };
 
   $http.get(SITE_URL + 'api/v1/data/stat/year?qlink=' + $rootScope.qlink).
     success(function(data, status, headers, config) {
@@ -225,7 +249,6 @@ function BustedsCtrl($scope, $http, $stateParams, $rootScope) {
   $rootScope.qlink = $stateParams.qlink;
   $scope.data = [];
 
-
   $scope.getItems = function () {
     $http.get(SITE_URL + 'api/v1/data/bustedall/20?qlink=' + $rootScope.qlink + '&page=' + $scope.current_page).
       success(function(data, status, headers, config) {
@@ -252,7 +275,6 @@ function BustedsCtrl($scope, $http, $stateParams, $rootScope) {
 function InfoCtrl($scope, $http, $stateParams, $rootScope) {
   $rootScope.qlink = $stateParams.qlink;
   $scope.info = {};
-
 
   $http.get(SITE_URL + 'api/v1/data/info?qlink=' + $rootScope.qlink).
     success(function(data, status, headers, config) {
