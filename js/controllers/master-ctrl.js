@@ -13,7 +13,8 @@ angular.module('RDash')
 .controller('BustedsCtrl', ['$scope', '$http', '$stateParams', '$rootScope', BustedsCtrl])
 .controller('InfoCtrl', ['$scope', '$http', '$stateParams', '$rootScope', InfoCtrl]);
 
-var SITE_URL = 'http://1and1.deliverwork.info/';
+var SITE_URL = 'http://1and1.ccea.org.tw/';
+//var SITE_URL = 'http://1and1.deliverwork.info/';
 //var SITE_URL = 'http://192.168.0.100:8000/';
 
 
